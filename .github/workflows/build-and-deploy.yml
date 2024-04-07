@@ -60,6 +60,6 @@ jobs:
 
       - name: reload myapp process
         run: |
-          ssh root@1.116.133.64 "chmod +x ~/test/reload.sh && ~/test/reload.sh"
+          ssh root@1.116.133.64 "cd ~/test && chmod +x ./reload.sh && ./reload.sh"
 
 
