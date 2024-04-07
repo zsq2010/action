@@ -5,6 +5,26 @@ on:
     branches: [ "main" ]
 
 jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.22.0
+
+      - name: Build
+        run: go build -o myapp
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: go-app
+          path: ${{ github.workspace }}
+
   deploy:
     runs-on: ubuntu-latest
 
@@ -25,12 +45,10 @@ jobs:
 
       - name: Upload project
         run: |
-          scp ${{ github.workspace }} root@1.116.133.64:~/test
+          scp ${{ github.workspace }} root@1.116.133.64:~/test     
 
       - name: Stop remote process
         run: |
-          ssh root@1.116.133.64 "pkill -f main"
+          ssh root@1.116.133.64 "pkill -f myapp"
 
-      - name: Start new process
-        run: |
-          ssh root@1.116.133.64 "cd ~/test && nohup ./main &"
+

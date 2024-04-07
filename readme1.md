@@ -14,7 +14,7 @@ steps:
       - name: SSH Deploy
         uses: appleboy/ssh-action@master
         with:
-          host: 1.116.133.64
+          host: 1.116.133.64Go Application CI
           username: root
           password: ioriqiqi1A--
           port: 22
