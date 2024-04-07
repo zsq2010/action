@@ -58,8 +58,8 @@ jobs:
         run: |
           scp -r ${{ github.workspace }}/* root@1.116.133.64:~/test     
 
-      - name: Stop remote process
+      - name: reload myapp process
         run: |
-          ssh root@1.116.133.64 "pkill -f myapp"
+          ssh root@1.116.133.64 'bash -s' < ~/reload.sh
 
 
