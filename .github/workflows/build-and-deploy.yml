@@ -34,10 +34,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: go-app
+          path: ${{ github.workspace }}
 
-      - name: View downloaded artifact content
-        run: |
-          ls -l /home/runner/work/action/action
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ${{ github.workspace }}
 
       - name: Add SSH key to known_hosts
         run: |
