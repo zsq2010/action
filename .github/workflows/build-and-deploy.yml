@@ -20,4 +20,4 @@ jobs:
 
       - name: Test SSH connection
         run: |
-          ssh user@your_remote_server "echo 'Connected to remote server'"
+          ssh root@1.116.133.64 "echo 'Connection test successful'"
