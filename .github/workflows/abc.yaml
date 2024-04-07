@@ -20,15 +20,4 @@ jobs:
           password: ${{ secrets.REMOTE_PASSWORD }}  # 或者使用 private key
           port: ${{ secrets.REMOTE_PORT }}
           script: |
-            # 检查 known_hosts 文件中是否已存在远程主机的公钥指纹
-            fingerprint=$(ssh-keygen -H -F "$REMOTE_HOST" | awk '{print $2}')
-            if [[ -z "$fingerprint" ]]; then
-              echo "远程主机的公钥指纹不存在于 known_hosts 文件中，正在添加..."
-              ssh-keyscan -H -p "${{ secrets.REMOTE_PORT }}" "${{ secrets.REMOTE_HOST }}" >> ~/.ssh/known_hosts
-              echo "远程主机的公钥指纹已成功添加到 known_hosts 文件中"
-            else
-              echo "远程主机的公钥指纹已存在于 known_hosts 文件中"
-            fi
-
-            # 执行你想要在远程主机上执行的命令
-            ssh -p "${{ secrets.REMOTE_PORT }}" "${{ secrets.REMOTE_USERNAME }}@${{ secrets.REMOTE_HOST }}" "echo 'Connection test successful'"
+            ssh root@1.116.133.64 "echo 'Connection test successful'"
