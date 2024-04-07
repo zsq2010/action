@@ -9,5 +9,7 @@ else
     echo "未找到相关进程"
 fi
 
+# 添加执行权限
+chmod +x ./myapp
 # 启动 myapp
 nohup ./myapp &
