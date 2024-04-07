@@ -47,7 +47,7 @@ jobs:
 
       - name: Upload new binary
         run: |
-          scp ${{ github.workspace }}/main root@1.116.133.64:~/test/main
+          scp ${{ github.workspace }}/main root@1.116.133.64:~/test
 
       - name: Stop remote process
         run: |
