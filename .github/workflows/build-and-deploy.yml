@@ -33,6 +33,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: go-app
+          path: ${{ github.workspace }}
 
 
       - name: Add SSH key to known_hosts
@@ -49,7 +50,7 @@ jobs:
         run: |
           ssh root@1.116.133.64 "echo 'Connection test successful'"
 
-      - name: Upload project
+      - name: copy down
         run: |
           scp ${{ github.workspace }} root@1.116.133.64:~/test     
 
