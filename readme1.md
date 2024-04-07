@@ -1,14 +1,14 @@
 name: Remote Server Deployment
 
 on:
-  push:
-    branches:
-      - main
+push:
+branches:
+- main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
+deploy:
+runs-on: ubuntu-latest
+steps:
 
 
       - name: SSH Deploy
