@@ -17,7 +17,7 @@ jobs:
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}  # 或者使用 private key
+          password: ${{ secrets.REMOTE_PASSWORD }}  # 或者使用 private key
           port: ${{ secrets.REMOTE_PORT }}
           script: |
             # 检查 known_hosts 文件中是否已存在远程主机的公钥指纹
