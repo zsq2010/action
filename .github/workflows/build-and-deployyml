@@ -5,22 +5,23 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Add SSH key to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 1.116.133.64 >> ~/.ssh/known_hosts
 
       - name: SSH into remote server
         uses: webfactory/ssh-agent@v0.5.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-
       - name: Check connection status
         run: |
-          ssh root@1.116.133.64 "echo 'Connection test successful'"        
-
+          ssh root@1.116.133.64 "echo 'Connection test successful'"
 
       - name: Upload project
         run: |
