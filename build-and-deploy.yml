@@ -1,0 +1,37 @@
+name: Go Application CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: SSH into remote server
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+
+      - name: Check connection status
+        run: |
+          ssh root@1.116.133.64 "echo 'Connection test successful'"        
+
+
+      - name: Upload project
+        run: |
+          scp ${{ github.workspace }} root@1.116.133.64:~/test
+
+      - name: Stop remote process
+        run: |
+          ssh root@1.116.133.64 "pkill -f main"
+
+      - name: Start new process
+        run: |
+          ssh root@1.116.133.64 "cd ~/test && nohup ./main &"
