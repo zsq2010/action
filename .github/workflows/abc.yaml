@@ -25,4 +25,4 @@ jobs:
           port: ${{ secrets.REMOTE_PORT }}
           script: |
             # 你想要在远程服务器上执行的命令
-            echo "Deploying to the server"
+            echo "Deploying to the serer"
