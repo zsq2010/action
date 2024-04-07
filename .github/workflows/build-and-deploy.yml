@@ -35,6 +35,9 @@ jobs:
         with:
           name: go-app
 
+      - name: View downloaded artifact content
+        run: |
+          ls -l /home/runner/work/action/action
 
       - name: Add SSH key to known_hosts
         run: |
